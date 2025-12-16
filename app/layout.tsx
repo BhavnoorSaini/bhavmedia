@@ -15,9 +15,6 @@ const canonicalDescription =
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  icons: {
-    icon: "/favicon.ico",
-  },
   title: {
     default: siteName,
     template: `%s | ${siteName}`,
