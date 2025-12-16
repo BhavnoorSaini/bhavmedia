@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import AutoLogout from "@/components/auto-logout";
 import { EthereumShim } from "@/components/ethereum-shim";
 
-const defaultUrl = process.env.WEB_URL
-  ? `https://${process.env.WEB_URL}`
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
 const siteName = "BhavMedia";
 
@@ -74,6 +75,7 @@ export default function RootLayout({
         <EthereumShim />
         <AutoLogout />
         {children}
+        <Analytics />
       </body>
     </html>
   );
