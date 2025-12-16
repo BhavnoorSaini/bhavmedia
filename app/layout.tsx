@@ -17,8 +17,15 @@ const canonicalDescription =
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: {
+      url: '/apple-touch-icon.png'},
   },
+  manifest: '/site.webmanifest',
   title: {
     default: siteName,
     template: `%s | ${siteName}`,
@@ -34,7 +41,7 @@ export const metadata: Metadata = {
     "brand storytelling",
     "event photographer",
     "portrait sessions",
-    "Supabase client portal",
+    "car photography",
   ],
   alternates: {
     canonical: "/",
