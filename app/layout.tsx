@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import AutoLogout from "@/components/auto-logout";
 import { EthereumShim } from "@/components/ethereum-shim";
+import { Analytics } from "@vercel/analytics/react";
 
 const defaultUrl = process.env.WEB_URL
   ? `https://${process.env.WEB_URL}`
@@ -71,6 +72,7 @@ export default function RootLayout({
         <EthereumShim />
         <AutoLogout />
         {children}
+        <Analytics />
       </body>
     </html>
   );
