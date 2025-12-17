@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LoginForm } from "@/components/login-form";
 
 export const metadata: Metadata = {
-  title: "Client Portal Login",
+  title: "BhavMedia Client Portal Login",
   description:
     "Access secure galleries and download bundles.",
   alternates: {
@@ -13,11 +13,11 @@ export const metadata: Metadata = {
     follow: false,
   },
   openGraph: {
-    title: "BhavMedia Client Login",
-    description:
-      "Sign in to manage galleries and download deliverables.",
-    url: "/auth/login",
-    type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+      },
+    ],
   },
 };
 
