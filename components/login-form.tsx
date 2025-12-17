@@ -86,7 +86,7 @@ export function LoginForm({
               />
             </div>
             {error ? (
-              <p className="text-sm text-destructive">{error}</p>
+              <p className="text-sm text-destructive text-center">{error}</p>
             ) : null}
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Logging in..." : "Login"}
