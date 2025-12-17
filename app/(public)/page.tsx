@@ -4,6 +4,7 @@ import { ServicesSection } from "@/components/home/services-section";
 import { AboutSection } from "@/components/home/about-section";
 import { CtaSection } from "@/components/home/cta-section";
 import { heroHighlights, services, aboutFeatures } from "@/lib/content/home";
+import { StructuredData } from "@/components/seo/structured-data";
 
 export const metadata: Metadata = {
   title: "Home | BhavMedia",
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
+      <StructuredData />
       <HeroSection highlights={heroHighlights} />
       <AboutSection features={aboutFeatures} />
       <ServicesSection services={services} />
