@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ContactForm, { ContactFormState } from "@/components/email/contact-form";
 import { sendEmail } from "@/lib/resend/email";
+import { StructuredData } from "@/components/seo/structured-data";
 
 export const metadata: Metadata = {
   title: "Contact Us | BhavMedia",
@@ -43,6 +44,7 @@ async function handleContactSubmit(
 export default function ContactPage() {
   return (
     <div className="flex flex-col flex-1">
+      <StructuredData />
       <section className="section-spacing border-y border-border/60 bg-muted/20">
         <div className="page-shell">
           <div className="mx-auto max-w-3xl">
