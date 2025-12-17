@@ -8,10 +8,6 @@ import { Analytics } from "@vercel/analytics/react";
 const defaultUrl = `https://bhavmedia.com`;
 const siteName = "BhavMedia";
 
-const canonicalTitle = "Professional Photography for Restaurants, Events, Automobiles, and Brands";
-const canonicalDescription =
-  "BhavMedia captures restaurant launches, car shoots, portraits, events, and real-estate.";
-
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
   applicationName: siteName,
