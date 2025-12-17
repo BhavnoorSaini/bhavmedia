@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LoginForm } from "@/components/login-form";
 
 export const metadata: Metadata = {
-  title: "Client Portal Login",
+  title: "BhavMedia Client Portal Login",
   description:
     "Access secure galleries and download bundles.",
   alternates: {

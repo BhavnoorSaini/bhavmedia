@@ -3,7 +3,7 @@ import ContactForm, { ContactFormState } from "@/components/email/contact-form";
 import { sendEmail } from "@/lib/resend/email";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact BhavMedia",
   description:
     "Reach out for restaurant launches, portrait sessions, events, and retouching projects. Expect next-day replies.",
   alternates: {

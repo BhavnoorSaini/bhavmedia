@@ -6,7 +6,7 @@ import { CtaSection } from "@/components/home/cta-section";
 import { heroHighlights, services, aboutFeatures } from "@/lib/content/home";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "BhavMedia Home",
   description:
     "BhavMedia captures restaurant launches, car shoots, portraits, events, and real-estate.",
   openGraph: {
