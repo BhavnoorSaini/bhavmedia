@@ -125,7 +125,7 @@ export default function ContactForm({ className, action }: ContactFormProps) {
             <Textarea
               id="message"
               name="message"
-              placeholder="Share your vision, project scope, or any questions you have."
+              placeholder="Tell us about your timeline, location, and what you're looking to capture..."
               className={cn("min-h-[160px] resize-none", fieldClassName)}
               required
             />
