@@ -5,14 +5,12 @@ import AutoLogout from "@/components/auto-logout";
 import { EthereumShim } from "@/components/ethereum-shim";
 import { Analytics } from "@vercel/analytics/react";
 
-const defaultUrl = process.env.WEB_URL
-  ? `https://${process.env.WEB_URL}`
-  : "http://localhost:3000";
+const defaultUrl = `https://bhavmedia.com`;
 const siteName = "BhavMedia";
 
 const canonicalTitle = "Professional Photography for Restaurants, Events, Automobiles, and Brands";
 const canonicalDescription =
-  "BhavMedia captures restaurant launches, car shoots, portraits, events, and real-estate stories with editorial polish, clear direction, and a Supabase-secured delivery pipeline.";
+  "BhavMedia captures restaurant launches, car shoots, portraits, events, and real-estate.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
@@ -42,6 +40,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: canonicalTitle,
+      },
+    ],
   },
   robots: {
     index: true,
