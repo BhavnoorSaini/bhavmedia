@@ -4,6 +4,7 @@ import "./globals.css";
 import AutoLogout from "@/components/auto-logout";
 import { EthereumShim } from "@/components/ethereum-shim";
 import { Analytics } from "@vercel/analytics/react";
+import { StructuredData } from "@/components/seo/structured-data";
 
 const defaultUrl = `https://bhavmedia.com`;
 const siteName = "BhavMedia";
@@ -54,6 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
+        <StructuredData />
         <EthereumShim />
         <AutoLogout />
         {children}
