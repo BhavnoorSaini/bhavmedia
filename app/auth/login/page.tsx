@@ -13,11 +13,11 @@ export const metadata: Metadata = {
     follow: false,
   },
   openGraph: {
-    title: "BhavMedia Client Login",
-    description:
-      "Sign in to manage galleries and download deliverables.",
-    url: "/auth/login",
-    type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+      },
+    ],
   },
 };
 

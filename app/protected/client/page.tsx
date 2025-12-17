@@ -7,9 +7,9 @@ import { GalleryGrid, GalleryImage } from "@/components/gallery-grid";
 import { DownloadAllButton } from "./download-all-button";
 
 export const metadata: Metadata = {
-  title: "Client Galleries & Deliverables",
+  title: "BhavMedia Client Portal",
   description:
-    "Browse, proof, and download galleries.",
+    "Centralize gallery previews and bulk downloads.",
   alternates: {
     canonical: "/protected/client",
   },
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
     follow: false,
   },
   openGraph: {
-    title: "BhavMedia Client Portal",
-    description:
-      "Centralize gallery previews and bulk downloads.",
-    url: "/protected/client",
-    type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+      },
+    ],
   },
 };
 

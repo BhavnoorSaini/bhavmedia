@@ -6,17 +6,10 @@ import { CtaSection } from "@/components/home/cta-section";
 import { heroHighlights, services, aboutFeatures } from "@/lib/content/home";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "BhavMedia",
-  },
+  title: "Home",
   description:
-    "See how BhavMedia plans shoots, directs talent, and delivers for restaurants, portraits, events, automobiles, and real-estate projects.",
+    "BhavMedia captures restaurant launches, car shoots, portraits, events, and real-estate.",
   openGraph: {
-    title: "BhavMedia Photography Studio",
-    description:
-      "Thoughtful photography with menu, portrait, event, automotive, and property coverage plus retouching and streamlined gallery delivery.",
-    url: "/",
-    type: "website",
     images: [
       {
         url: "/opengraph-image.png",
