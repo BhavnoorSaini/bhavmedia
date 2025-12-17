@@ -3,11 +3,11 @@ import ContactForm, { ContactFormState } from "@/components/email/contact-form";
 import { sendEmail } from "@/lib/resend/email";
 
 export const metadata: Metadata = {
-  title: "Contact BhavMedia",
+  title: "Contact Us | BhavMedia",
   description:
-    "Reach out for restaurant launches, portrait sessions, events, and retouching projects. Expect next-day replies.",
+    "Ready to capture your next project? Contact BhavMedia for professional restaurant, event, and portrait photography in Plainfield, Chicago, and the surrounding suburbs. Fast next-day replies.",
   alternates: {
-    canonical: "/contact",
+    canonical: "https://bhavmedia.com/contact",
   },
   openGraph: {
     images: [
