@@ -17,6 +17,11 @@ export const metadata: Metadata = {
       "Thoughtful photography with menu, portrait, event, automotive, and property coverage plus retouching and streamlined gallery delivery.",
     url: "/",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+      },
+    ],
   },
 };
 
