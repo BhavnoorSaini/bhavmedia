@@ -7,11 +7,11 @@ import { GalleryGrid, GalleryImage } from "@/components/gallery-grid";
 import { DownloadAllButton } from "./download-all-button";
 
 export const metadata: Metadata = {
-  title: "BhavMedia Client Portal",
+  title: "Your Gallery | BhavMedia Client Portal",
   description:
-    "Centralize gallery previews and bulk downloads.",
+    "View and download your professional photo assets.",
   alternates: {
-    canonical: "/protected/client",
+    canonical: "https://bhavmedia.com/protected/client",
   },
   robots: {
     index: false,

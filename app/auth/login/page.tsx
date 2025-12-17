@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { LoginForm } from "@/components/login-form";
 
 export const metadata: Metadata = {
-  title: "BhavMedia Client Portal Login",
+  title: "Client Portal | BhavMedia",
   description:
-    "Access secure galleries and download bundles.",
+    "Securely access and download your professional photography galleries.",
   alternates: {
-    canonical: "/auth/login",
+    canonical: "https://bhavmedia.com/auth/login",
   },
   robots: {
     index: false,

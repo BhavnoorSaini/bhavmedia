@@ -6,9 +6,12 @@ import { CtaSection } from "@/components/home/cta-section";
 import { heroHighlights, services, aboutFeatures } from "@/lib/content/home";
 
 export const metadata: Metadata = {
-  title: "BhavMedia Home",
+  title: "Home | BhavMedia",
   description:
-    "BhavMedia captures restaurant launches, car shoots, portraits, events, and real-estate.",
+    "Local Chicago, IL photographer specializing in premium restaurant, event, portrait, and car photography services. Based in Plainfield, IL, serving the entire Chicagoland area.",
+  alternates: {
+    canonical: "https://bhavmedia.com",
+  },
   openGraph: {
     images: [
       {
