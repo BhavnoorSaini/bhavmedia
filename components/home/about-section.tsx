@@ -18,7 +18,7 @@ export function AboutSection({ features }: AboutSectionProps) {
             Calm direction, clear timelines, and imagery that still feels personal years later.
           </h2>
           <p className="text-base leading-relaxed text-muted-foreground">
-            Every brief starts with listening. From there we map the light, locations, styling, and delivery milestones so you can stay focused on the experience instead of logistics.
+            Every brief starts with listening. I provide on-location photography for clients in Plainfield, Naperville, Aurora, to downtown Chicago, ensuring the logistics of your shoot are as polished as the final images.
           </p>
         </div>
 

@@ -16,7 +16,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
             <span>Services</span>
           </div>
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Flexible collections that scale from intimate sessions to full-scale productions.
+            Commercial & Enthusiast Photography Services in Illinois
           </h2>
           <p className="text-base text-muted-foreground">
             Choose the coverage you need and layer on planning support, direction, and retouching without the guesswork.
