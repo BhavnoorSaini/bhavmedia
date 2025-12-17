@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "brand storytelling",
     "event photographer",
     "portrait sessions",
-    "Supabase client portal",
+    "car photographer",
   ],
   alternates: {
     canonical: "/",
