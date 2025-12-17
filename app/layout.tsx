@@ -14,11 +14,6 @@ const canonicalDescription =
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: {
-    default: siteName,
-    template: `%s | ${siteName}`,
-  },
-  description: canonicalDescription,
   applicationName: siteName,
   creator: siteName,
   publisher: siteName,
@@ -33,25 +28,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
-  },
-  openGraph: {
-    title: `${siteName} | ${canonicalTitle}`,
-    description: canonicalDescription,
-    type: "website",
-    url: "/",
-    siteName,
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: canonicalTitle,
-      },
-    ],
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 
