@@ -14,10 +14,10 @@ export function HeroSection({ highlights }: HeroSectionProps) {
         <div className="space-y-6 text-center sm:text-left">
           <div className="space-y-4">
             <h1 className="text-balance text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-              Thoughtful photography with a streamlined, detail-forward process.
+              Professional Photography for <span className="text-primary">Chicagoland Brands & Restaurants.</span>
             </h1>
             <p className="max-w-3xl text-balance text-base text-muted-foreground sm:text-lg sm:leading-relaxed">
-              Restaurant launches, menu features, and editorial work handled with the same calm direction, clear communication, and polished delivery.
+              Based in Plainfield, IL, we specialize in restaurant launches, editorial menu features, and brand storytelling across the Chicagoland area.
             </p>
           </div>
         </div>

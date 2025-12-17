@@ -33,19 +33,19 @@ export type AboutFeature = {
 export const heroHighlights = [
   {
     icon: Award,
-    title: "Professional Quality",
-    description: "Refined storytelling that balances editorial polish with real emotion.",
+    title: "Production Standards",
+    description: "High-end editorial polish mixed with a streamlined, commercial workflow.",
   },
   {
     icon: Heart,
-    title: "Client-Focused",
+    title: "Tailored Experience",
     description:
-      "Trusted by restaurants, professionals, and enthusiasts teams to capture their defining moments.",
+      "Working with Chicago's top culinary and automotive teams to capture their best work.",
   },
   {
     icon: Camera,
-    title: "On-Location",
-    description: "Flexible setups designed around your vision, lighting, and schedule.",
+    title: "Mobile Studio",
+    description: "Pro-grade lighting and gear brought directly to your venue, home, or garage.",
   },
 ] satisfies ReadonlyArray<HeroHighlight>;
 
@@ -75,15 +75,15 @@ export const services = [
     icon: Car,
     label: "Automobile Photography",
     description:
-      "Captivating visuals for enthusiasts, dealerships, and marketing campaigns.",
-    features: ["Interior shots", "Detail-focused angles", "Dynamic motion captures"],
+      "High-impact visuals for enthusiasts, private sellers, and marketing campaigns.",
+    features: ["Dynamic rolling shots", "Engine & interior details", "For-sale-ready packages"],
   },
   {
     icon: House,
-    label: "Real Estate Projects",
+    label: "Architecture & Real Estate",
     description:
-      "Showcase properties with bright, inviting imagery that highlights key features.",
-    features: ["Wide-angle interiors", "Exterior shots", "Twilight photography"],
+      "Natural, inviting imagery designed to move properties and showcase design.",
+    features: ["HDR natural lighting", "Twilight & blue-hour sets", "Quick 24-48h delivery"],
   },
   {
     icon: Sparkles,
@@ -97,12 +97,12 @@ export const services = [
 export const aboutFeatures = [
   {
     icon: Palette,
-    title: "Art Direction",
-    description: "Thoughtful lighting, posing, and composition bring your story vividly to life.",
+    title: "Creative Direction",
+    description: "I don't just show up; I help plan the lighting, angles, and mood to fit your brand.",
   },
   {
     icon: ShieldCheck,
-    title: "Deliver",
-    description: "Professionally edited galleries ready for print, web, and social sharing.",
+    title: "Secure Client Portal",
+    description: "Instant access to your high-res gallery with 24/7 download and sharing capabilities.",
   },
 ] satisfies ReadonlyArray<AboutFeature>;
