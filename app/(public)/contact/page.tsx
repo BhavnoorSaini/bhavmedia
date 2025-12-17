@@ -3,18 +3,18 @@ import ContactForm, { ContactFormState } from "@/components/email/contact-form";
 import { sendEmail } from "@/lib/resend/email";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact | BhavMedia",
   description:
-    "Share your brief, timeline, and references to get a tailored photography proposal with secure gallery delivery and fast communication.",
+    "Reach out for restaurant launches, portrait sessions, events, and retouching projects. Expect next-day replies.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact | BhavMedia",
-    description:
-      "Reach out for restaurant launches, portrait sessions, events, and retouching projects. Expect next-day replies.",
-    type: "website",
-    url: "/contact",
+    images: [
+      {
+        url: "/opengraph-image.png",
+      },
+    ]
   },
 };
 
