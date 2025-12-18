@@ -43,6 +43,7 @@ export const viewport: Viewport = {
 const geistSans = Geist({
   variable: "--font-geist-sans",
   display: "swap",
+  preload: false,
   subsets: ["latin"],
 });
 
