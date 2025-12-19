@@ -4,6 +4,7 @@ import "./globals.css";
 import AutoLogout from "@/components/auto-logout";
 import { EthereumShim } from "@/components/ethereum-shim";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const defaultUrl = `https://bhavmedia.com`;
 const siteName = "BhavMedia";
@@ -68,6 +69,7 @@ export default function RootLayout({
         <AutoLogout />
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
