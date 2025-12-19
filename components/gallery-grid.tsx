@@ -224,7 +224,7 @@ const GalleryCard = memo(function GalleryCard({ image, isFirst, onSelect }: Gall
       }}
       className="group relative overflow-hidden rounded-2xl border bg-card shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
     >
-      <div className="relative aspect-square w-full overflow-hidden bg-muted">
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-muted">
         <Image
           src={image.url}
           alt={`Client photo ${image.name}`}
