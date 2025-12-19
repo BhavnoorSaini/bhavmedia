@@ -28,6 +28,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon2.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon3.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/icon4.png",
+    apple: "/apple-icon.png",
+  },
   robots: {
     index: true,
     follow: true,
