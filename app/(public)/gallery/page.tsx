@@ -21,8 +21,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Revalidate gallery data every hour to avoid overloading R2 with requests
-export const revalidate = 3600;
 
 async function getGalleryImages() {
   const command = new ListObjectsV2Command({
