@@ -5,6 +5,7 @@ import { ImageIcon } from "lucide-react";
 import { Suspense } from "react";
 import { GalleryGrid, GalleryImage } from "@/components/gallery-grid";
 import { DownloadAllButton } from "./download-all-button";
+import { GallerySkeleton } from "@/components/gallery-skeleton";
 
 export const metadata: Metadata = {
   title: "Your Gallery | BhavMedia Client Portal",
@@ -193,7 +194,7 @@ async function UserProfile() {
 
 export default function ProtectedPage() {
   return (
-    <Suspense fallback={<div className="h-64 w-full rounded-3xl border border-border/60 bg-muted/30 animate-pulse" />}>
+    <Suspense fallback={<GallerySkeleton />}>
       <UserProfile />
     </Suspense>
   );

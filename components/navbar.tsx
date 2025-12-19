@@ -40,6 +40,12 @@ export async function Navbar() {
               Home
             </Link>
             <Link
+              href="/gallery"
+              className="rounded-full px-3 py-1.5 text-muted-foreground transition hover:text-primary"
+            >
+              Gallery
+            </Link>
+            <Link
               href="/contact"
               className="rounded-full px-3 py-1.5 text-muted-foreground transition hover:text-primary"
             >
