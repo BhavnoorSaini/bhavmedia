@@ -9,7 +9,6 @@ export async function Navbar() {
     data: { user },
   } = await supabase.auth.getUser();
   const isLoggedIn = Boolean(user);
-  const userEmail = user?.email ?? null;
 
   return (
     <header className="relative z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur">
@@ -51,13 +50,13 @@ export async function Navbar() {
             >
               Contact
             </Link>
-            <AuthButton compact />
+            <AuthButton/>
           </div>
         )}
 
         {isLoggedIn && (
           <div className="ml-auto flex items-center gap-3">
-            <AuthButton userEmail={userEmail} />
+            <AuthButton />
           </div>
         )}
       </nav>
