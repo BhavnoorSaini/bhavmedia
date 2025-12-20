@@ -3,9 +3,9 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ImageIcon } from "lucide-react";
 import { Suspense } from "react";
-import { GalleryGrid, GalleryImage } from "@/components/gallery-grid";
+import { GalleryGrid, GalleryImage } from "@/components/gallery/gallery-grid";
 import { DownloadAllButton } from "./download-all-button";
-import { GallerySkeleton } from "@/components/gallery-skeleton";
+import { GallerySkeleton } from "@/components/gallery/gallery-skeleton";
 
 export const metadata: Metadata = {
   title: "Your Gallery | BhavMedia Client Portal",

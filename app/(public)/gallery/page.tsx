@@ -1,9 +1,9 @@
 import { ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { r2Client } from "@/lib/r2/r2";
-import { GalleryGrid } from "@/components/public-gallery";
+import { GalleryGrid } from "@/components/gallery/public-gallery";
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { GallerySkeleton } from "@/components/gallery-skeleton";
+import { GallerySkeleton } from "@/components/gallery/gallery-skeleton";
 
 export const metadata: Metadata = {
   title: "Gallery | BhavMedia",
