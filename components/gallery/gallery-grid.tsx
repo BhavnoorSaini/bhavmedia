@@ -168,7 +168,7 @@ export function GalleryGrid({ images }: Props) {
                 >
                   <Image
                     src={selected.url}
-                    alt={`Preview of ${selected.name}`}
+                    alt={`Preview of ${selected.name.split('.')[0].replace(/[-_]/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 70vw"
                     className="rounded-lg object-contain"
@@ -227,7 +227,7 @@ const GalleryCard = memo(function GalleryCard({ image, isFirst, onSelect }: Gall
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-muted">
         <Image
           src={image.url}
-          alt={`Client photo ${image.name}`}
+          alt={`Client photo ${image.name.split('.')[0].replace(/[-_]/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition duration-500 group-hover:scale-105"
