@@ -140,7 +140,7 @@ export function GalleryGrid({ images }: Props) {
           <div
             role="dialog"
             aria-modal="true"
-            aria-label={`Preview ${selected.name}`}
+            aria-label={`Preview ${selected.name.split('.')[0].replace(/[-_]/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}`}
             className="relative w-full max-w-5xl overflow-hidden rounded-2xl bg-card shadow-2xl ring-1 ring-border"
             onClick={(event) => event.stopPropagation()}
           >
