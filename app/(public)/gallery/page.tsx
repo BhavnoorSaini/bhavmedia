@@ -45,10 +45,6 @@ async function getGalleryImages() {
 export default function GalleryPage() {
   return (
     <main className="flex flex-1 flex-col">
-      {/* Static Hero Section */}
-      <section className="...">...</section>
-
-      {/* Dynamic Gallery Section */}
       <section className="section-spacing">
         <div className="page-shell">
           <Suspense fallback={<GallerySkeleton />}>
