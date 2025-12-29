@@ -2,6 +2,16 @@
 
 BhavMedia is a professional photography studio based online. We capture weddings, portraits, events, and commercial shoots with a focus on authentic moments, clean composition, and beautiful color.
 
+## Features
+
+- Responsive, high-performance portfolio and gallery pages
+- Public gallery served from Cloudflare R2 (`/gallery`) for fast CDN delivery
+- Private client galleries with authenticated access and private file storage (Supabase) at `/auth/client`
+- Account-based authentication and database powered by Supabase
+- High-resolution downloads, print-ready files, and optional print ordering
+- Contact form uses Resend for transactional emails
+- Built with Next.js and Tailwind CSS for fast local development and deployment
+
 ## Portfolio
 
 - Browse the full portfolio on the site: the homepage and the `/gallery` route showcase selected projects and client galleries.
@@ -33,7 +43,33 @@ Please include event date, location, and a brief description when enquiring.
 
 ## Run Locally (development)
 
-If you want to run this site locally ( Next.js project), install dependencies and start the dev server:
+If you want to run this site locally (Next.js project), create a `.env.local` file with the required environment variables (example below), install dependencies, and start the dev server.
+
+Create a `.env.local` file with these variables (fill in values):
+
+```env
+R2_ACCESS_KEY_ID=
+R2_SECRET_ACCESS_KEY=
+R2_ENDPOINT=
+R2_BUCKET_NAME=
+NEXT_PUBLIC_R2_PUBLIC_URL=
+
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=
+RESEND_TO_EMAIL=
+
+NEXT_PUBLIC_SOCIAL_INSTAGRAM_URL=
+NEXT_PUBLIC_SOCIAL_TIKTOK_URL=
+NEXT_PUBLIC_CONTACT_EMAIL=
+```
+
+Note: the contact page uses Resend for sending emails.
+
+Install dependencies and run the dev server:
 
 ```bash
 npm install
