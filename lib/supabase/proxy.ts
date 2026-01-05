@@ -47,33 +47,23 @@ export async function updateSession(request: NextRequest) {
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
 
-  if (
-    request.nextUrl.pathname !== "/" &&
-    !user &&
-    // !request.nextUrl.pathname.startsWith("/auth/login") &&
-    !request.nextUrl.pathname.startsWith("/auth") &&
-    // Allow public access to gallery
-    !request.nextUrl.pathname.startsWith("/gallery") &&
-    !request.nextUrl.pathname.startsWith("/contact")
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
+  const path = request.nextUrl.pathname;
+
+  // 1. public paths
+  const isPublicPath = 
+    path === "/" || 
+    path.startsWith("/auth") || 
+    path.startsWith("/gallery") || 
+    path.startsWith("/contact") ||
+    path.startsWith("/_next") || // Ensure Next.js internal files are skipped
+    path.includes(".");          // Skip static files like favicon.ico
+
+  // 2. Redirect if not a public path and no user exists
+  if (!isPublicPath && !user) {
     const url = request.nextUrl.clone();
     url.pathname = "/";
     return NextResponse.redirect(url);
   }
-
-  // IMPORTANT: You *must* return the supabaseResponse object as it is.
-  // If you're creating a new response object with NextResponse.next() make sure to:
-  // 1. Pass the request in it, like so:
-  //    const myNewResponse = NextResponse.next({ request })
-  // 2. Copy over the cookies, like so:
-  //    myNewResponse.cookies.setAll(supabaseResponse.cookies.getAll())
-  // 3. Change the myNewResponse object to fit your needs, but avoid changing
-  //    the cookies!
-  // 4. Finally:
-  //    return myNewResponse
-  // If this is not done, you may be causing the browser and server to go out
-  // of sync and terminate the user's session prematurely!
 
   return supabaseResponse;
 }
