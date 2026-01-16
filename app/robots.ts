@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const SITE_URL = 'https://bhavmedia.com';
+const SITE_URL = 'https://bhavmedia.com/';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -18,6 +18,6 @@ export default function robots(): MetadataRoute.Robots {
         '/api/',
       ],
     },
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    sitemap: `${SITE_URL}sitemap.xml`,
   }
 }
