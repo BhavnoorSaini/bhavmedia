@@ -26,9 +26,6 @@ export const metadata: Metadata = {
     "Plainfield portrait sessions", 
     "brand storytelling photography",
   ],
-  alternates: {
-    canonical: "/",
-  },
   icons: {
     icon: [
       { url: "/favicon.ico" },

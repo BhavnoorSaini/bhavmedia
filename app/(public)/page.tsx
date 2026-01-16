@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Local Chicago, IL photographer specializing in premium restaurant, event, portrait, and car photography services. Based in Plainfield, IL, serving the entire Chicagoland area.",
   alternates: {
-    canonical: "https://bhavmedia.com",
+    canonical: "https://bhavmedia.com/",
   },
   openGraph: {
     images: [

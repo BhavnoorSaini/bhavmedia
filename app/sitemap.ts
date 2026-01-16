@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const SITE_URL = 'https://bhavmedia.com';
+const SITE_URL = 'https://bhavmedia.com/';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -11,13 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${SITE_URL}/gallery`,
+      url: `${SITE_URL}gallery`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/contact`,
+      url: `${SITE_URL}contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
