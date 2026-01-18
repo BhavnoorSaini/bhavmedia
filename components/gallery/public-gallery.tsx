@@ -13,7 +13,7 @@ type Props = {
   images: GalleryImage[];
 };
 
-const INITIAL_VISIBLE = 10; // reduce initial load for performance
+const INITIAL_VISIBLE = 25; // reduce initial load for performance
 const LOAD_STEP = 8; // load 8 more images each time user scrolls near bottom
 
 export function GalleryGrid({ images }: Props) {
@@ -38,23 +38,25 @@ export function GalleryGrid({ images }: Props) {
   }, [selected, close]);
 
   // Infinite Scroll
-  useEffect(() => {
-    if (!hasMore) return undefined;
-    const target = sentinelRef.current;
-    if (!target) return undefined;
+    useEffect(() => {
+        if (!hasMore) return undefined;
+        const target = sentinelRef.current;
+        if (!target) return undefined;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setVisibleCount((prev) => Math.min(images.length, prev + LOAD_STEP));
-        }
-      },
-      { rootMargin: "100px 0px" } // Load images when user is 100px away from bottom
-    );
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries.some((entry) => entry.isIntersecting)) {
+                    setVisibleCount((prev) => Math.min(images.length, prev + LOAD_STEP));
+                }
+            },
+            {
+                rootMargin: "200px",
+            }
+        );
 
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, [hasMore, images.length]);
+        observer.observe(target);
+        return () => observer.disconnect();
+    }, [hasMore, images.length, visibleImages]); // Added visibleImages to re-run if more space is available
 
   // Prevent background scroll when preview window is open
   useEffect(() => {
