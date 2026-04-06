@@ -151,20 +151,14 @@ async function UserProfile() {
 
   return (
     <div className="flex flex-col gap-12">
-      <section className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-background via-primary/5 to-background px-6 py-12 text-center sm:px-10">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-60"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 12% 20%, hsl(var(--primary) / 0.12), transparent 45%), radial-gradient(circle at 88% 0%, hsl(var(--primary) / 0.08), transparent 35%), linear-gradient(130deg, rgba(255, 255, 255, 0.04) 0%, transparent 45%)",
-          }}
-        />
-        <div className="relative space-y-6">
-          <div className="space-y-3">
-            <h1 className="text-3xl font-semibold sm:text-4xl">
+      <section className="w-full bg-muted/40 p-8 sm:p-16 rounded-[2.5rem] border border-border/60 shadow-sm relative overflow-hidden flex flex-col items-center text-center">
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-transparent to-background/20" />
+        <div className="relative z-10 flex flex-col items-center gap-8 max-w-2xl mx-auto">
+          <div className="space-y-4">
+            <h1 className="text-balance text-4xl font-light tracking-tight text-foreground sm:text-5xl leading-[1.1]">
               Welcome, {profile.full_name ?? "there"}
             </h1>
-            <p className="text-base text-muted-foreground">
+            <p className="text-lg font-light leading-relaxed text-muted-foreground">
               Tap any photo to preview it or download everything at once below.
             </p>
           </div>

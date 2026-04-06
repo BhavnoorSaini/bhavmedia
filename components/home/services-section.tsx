@@ -1,4 +1,5 @@
 import type { ServiceOffering } from "@/lib/content/home";
+import { Check } from "lucide-react";
 
 interface ServicesSectionProps {
   services: ReadonlyArray<ServiceOffering>;
@@ -6,29 +7,35 @@ interface ServicesSectionProps {
 
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
-    <section id="services" className="section-spacing bg-muted/20">
-      <div className="page-shell flex flex-col gap-20">
-        <div className="max-w-2xl space-y-6">
+    <section id="services" className="section-spacing bg-muted/30">
+      <div className="page-shell flex flex-col gap-16">
+        <div className="flex flex-col items-center text-center space-y-6 max-w-2xl mx-auto">
           <h2 className="text-balance text-4xl font-light tracking-tight text-foreground sm:text-5xl">
-            Services
+            Specialized Services
           </h2>
           <p className="text-lg font-light leading-relaxed text-muted-foreground">
             Choose the coverage you need and layer on planning support, direction, and retouching without the guesswork.
           </p>
         </div>
 
-        <div className="grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(({ icon: Icon, label, description, features }) => (
-            <div key={label} className="flex flex-col gap-6">
-              <div className="flex items-center gap-4 border-b border-border/40 pb-5">
-                <Icon className="h-6 w-6 text-primary stroke-[1.5]" />
-                <h3 className="text-lg font-medium text-foreground">{label}</h3>
+            <div 
+              key={label} 
+              className="group relative flex flex-col items-center text-center overflow-hidden rounded-3xl bg-background p-8 border border-border/50 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1"
+            >
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <Icon className="h-7 w-7 stroke-[1.5]" />
               </div>
-              <p className="text-base font-light leading-relaxed text-muted-foreground">{description}</p>
-              <ul className="space-y-3 text-sm font-light text-foreground/70 mt-auto pt-4">
+              <h3 className="mb-3 text-xl font-medium text-foreground">{label}</h3>
+              <p className="mb-8 text-base font-light leading-relaxed text-muted-foreground">{description}</p>
+              
+              <ul className="mt-auto space-y-3 text-sm font-light text-foreground/80 w-full">
                 {features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3">
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary/40"></span>
+                  <li key={feature} className="flex items-center justify-center gap-3">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted/50 text-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                      <Check className="h-3 w-3 stroke-[3]" />
+                    </span>
                     <span>{feature}</span>
                   </li>
                 ))}

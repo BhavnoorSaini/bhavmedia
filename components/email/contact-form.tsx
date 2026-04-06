@@ -103,7 +103,7 @@ export default function ContactForm({ className, action }: ContactFormProps) {
           />
         </div>
 
-        <div className="pt-4 flex flex-col items-center sm:items-start">
+        <div className="pt-4 flex flex-col items-center">
           <SubmitButton pending={isPending} />
         </div>
 
@@ -136,10 +136,10 @@ function SubmitButton({ pending }: { pending: boolean }) {
     <button 
       type="submit" 
       disabled={pending}
-      className="group inline-flex items-center gap-3 border-b border-primary/30 pb-2 text-lg font-medium text-foreground transition-all hover:border-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent"
+      className="group inline-flex h-14 w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-foreground px-10 text-base font-medium text-background transition-transform hover:scale-105 shadow-xl shadow-foreground/10 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap mt-4"
     >
       {pending ? "Sending..." : "Send Message"}
-      {!pending && <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 stroke-[1.5]" />}
+      {!pending && <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 stroke-[2]" />}
     </button>
   );
 }
