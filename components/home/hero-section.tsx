@@ -1,7 +1,4 @@
-import Link from "next/link";
 import type { HeroHighlight } from "@/lib/content/home";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 
 type HeroSectionProps = {
   highlights: ReadonlyArray<HeroHighlight>;
@@ -9,35 +6,29 @@ type HeroSectionProps = {
 
 export function HeroSection({ highlights }: HeroSectionProps) {
   return (
-    <section className="section-spacing border-b border-border/60 bg-gradient-to-b from-background via-primary/5 to-background">
-      <div className="relative page-shell section-stack">
-        <div className="space-y-6 text-center sm:text-left">
-          <div className="space-y-4">
-            <h1 className="text-balance text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-              Professional Photography for <span className="text-primary">Chicagoland Brands & Restaurants.</span>
-            </h1>
-            <p className="max-w-3xl text-balance text-base text-muted-foreground sm:text-lg sm:leading-relaxed">
-              Based in Plainfield, IL, we specialize in restaurant launches, editorial menu features, and brand storytelling across the Chicagoland area.
-            </p>
-          </div>
+    <section className="section-spacing bg-background pt-24 pb-16">
+      <div className="page-shell flex flex-col items-center text-center gap-20">
+        <div className="max-w-4xl space-y-8 mt-12">
+          <h1 className="text-balance text-5xl font-light tracking-tight text-foreground sm:text-7xl leading-tight">
+            Professional Photography for <br className="hidden sm:block" />
+            <span className="font-medium">Chicagoland Brands</span>
+          </h1>
+          <p className="mx-auto max-w-2xl text-balance text-lg text-muted-foreground sm:text-xl font-light leading-relaxed">
+            Based in Plainfield, IL, we specialize in restaurant launches, editorial menu features, and brand storytelling across the Chicagoland area.
+          </p>
         </div>
 
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible sm:snap-none">
+        <div className="grid w-full gap-12 sm:grid-cols-3 border-t border-border/40 pt-16">
           {highlights.map(({ icon: Icon, title, description }) => (
-            <Card
-              key={title}
-              className="flex min-w-[240px] flex-col gap-3 rounded-[var(--card-radius-lg)] border-border/60 bg-background/90 p-5 backdrop-blur-sm sm:min-w-0"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 12% 20%, hsl(var(--primary) / 0.08), transparent 45%), radial-gradient(circle at 88% 0%, hsl(var(--primary) / 0.06), transparent 35%), linear-gradient(130deg, rgba(255, 255, 255, 0.06) 0%, transparent 45%)",
-              }}
-            >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Icon className="h-5 w-5" />
+            <div key={title} className="flex flex-col items-center gap-5 text-center px-4">
+              <span className="inline-flex items-center justify-center text-primary">
+                <Icon className="h-7 w-7 stroke-[1.5]" />
               </span>
-              <p className="text-sm font-semibold text-foreground">{title}</p>
-              <p className="text-sm text-muted-foreground">{description}</p>
-            </Card>
+              <div className="space-y-2">
+                <h3 className="text-sm font-medium tracking-[0.15em] text-foreground uppercase">{title}</h3>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed">{description}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>

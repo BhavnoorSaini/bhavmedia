@@ -1,36 +1,25 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export function CtaSection() {
   return (
-    <section className="section-spacing">
+    <section className="section-spacing bg-background py-32 border-t border-border/20">
       <div className="page-shell">
-        <div
-          className="relative overflow-hidden rounded-[var(--card-radius-lg)] border border-border/60 bg-background/95 shadow-[0_35px_120px_-60px_rgba(10,10,20,0.9)]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 12% 20%, hsl(var(--primary) / 0.2), transparent 55%), radial-gradient(circle at 88% 0%, hsl(var(--primary) / 0.18), transparent 50%), linear-gradient(130deg, rgba(255, 255, 255, 0.16) 0%, transparent 55%)",
-          }}
-        >
-          <div className="space-y-6 px-6 py-10 text-center sm:px-14 sm:py-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-              Next steps
-            </p>
-            <h2 className="text-3xl font-semibold text-foreground sm:text-4xl">
-              Let’s map out the session while the inspiration is fresh.
-            </h2>
-            <p className="text-base text-muted-foreground sm:text-lg">
-              Send over your timeline, moodboard, or venue details and I’ll reply with a clear plan, pricing, and production schedule.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="shadow-primary/30 shadow-md">
-                <Link href="/contact">
-                  Book a consultation
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+        <div className="flex flex-col items-center text-center space-y-12 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-light tracking-tight text-foreground sm:text-6xl leading-tight">
+            Let’s map out the session.
+          </h2>
+          <p className="text-lg font-light text-muted-foreground sm:text-xl leading-relaxed">
+            Send over your timeline, moodboard, or venue details and I’ll reply with a clear plan, pricing, and production schedule.
+          </p>
+          <div className="pt-4">
+            <Link 
+              href="/contact"
+              className="group inline-flex items-center gap-3 border-b border-primary/30 pb-2 text-lg font-medium text-foreground transition-all hover:border-foreground"
+            >
+              Book a consultation
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 stroke-[1.5]" />
+            </Link>
           </div>
         </div>
       </div>
