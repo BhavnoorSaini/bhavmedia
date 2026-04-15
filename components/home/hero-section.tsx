@@ -1,16 +1,11 @@
 import type { HeroHighlight } from "@/lib/content/home";
-import type { FeaturedImage } from "./featured-work-section";
-import Image from "next/image";
 import Link from "next/link";
 
 type HeroSectionProps = {
   highlights: ReadonlyArray<HeroHighlight>;
-  images?: FeaturedImage[];
 };
 
-export function HeroSection({ highlights, images = [] }: HeroSectionProps) {
-  const heroImages = images.slice(0, 3);
-
+export function HeroSection({ highlights }: HeroSectionProps) {
   return (
     <section className="relative flex min-h-[85vh] flex-col justify-center overflow-hidden bg-background pb-24 pt-32">
       {/* Layered background */}
@@ -49,31 +44,6 @@ export function HeroSection({ highlights, images = [] }: HeroSectionProps) {
             </Link>
           </div>
         </div>
-
-        {/* Hero image preview strip */}
-        {heroImages.length > 0 && (
-          <div className="mx-auto flex w-full max-w-3xl gap-3 sm:gap-4">
-            {heroImages.map((img, i) => (
-              <div
-                key={img.name}
-                className={`relative overflow-hidden rounded-2xl bg-muted/30 ${
-                  i === 1
-                    ? "aspect-[3/4] flex-[1.2]"
-                    : "aspect-[3/4] flex-1 hidden sm:block"
-                }`}
-              >
-                <Image
-                  src={img.url}
-                  alt={img.name}
-                  fill
-                  sizes={i === 1 ? "40vw" : "25vw"}
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            ))}
-          </div>
-        )}
 
         <div className="grid w-full gap-10 border-t border-border/50 pt-12 sm:grid-cols-3">
           {highlights.map(({ icon: Icon, title, description }) => (
