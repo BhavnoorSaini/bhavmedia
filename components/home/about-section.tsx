@@ -1,5 +1,5 @@
 import type { AboutFeature } from "@/lib/content/home";
-import { Camera } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 interface AboutSectionProps {
   features: ReadonlyArray<AboutFeature>;
@@ -7,37 +7,37 @@ interface AboutSectionProps {
 
 export function AboutSection({ features }: AboutSectionProps) {
   return (
-    <section className="section-spacing bg-muted/20">
-      <div className="page-shell grid gap-10 md:grid-cols-[1.1fr,0.9fr] md:items-center">
-        <div className="space-y-5">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-primary">
-            <Camera className="h-4 w-4" />
-            <span>Approach</span>
-          </div>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Calm direction, clear timelines, and imagery that still feels personal years later.
+    <section className="section-spacing border-t border-border/40 bg-background">
+      <div className="page-shell mx-auto max-w-5xl space-y-16">
+        <div className="space-y-8 text-center">
+          <h2 className="text-balance text-4xl font-light leading-[1.15] tracking-tight text-foreground sm:text-6xl">
+            Calm direction, clear timelines, and imagery that still feels
+            personal years later.
           </h2>
-          <p className="text-base leading-relaxed text-muted-foreground">
-            Every brief starts with listening. I provide on-location photography for clients in Plainfield, Naperville, Aurora, to downtown Chicago, ensuring the logistics of your shoot are as polished as the final images.
+          <p className="mx-auto max-w-3xl text-xl font-light leading-relaxed text-muted-foreground">
+            Every brief starts with listening. I provide on-location photography
+            for clients in Plainfield, Naperville, Aurora, to downtown Chicago,
+            ensuring the logistics of your shoot are as polished as the final
+            images.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1">
+        <div className="grid gap-6 pt-4 sm:grid-cols-2">
           {features.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="flex gap-4 rounded-2xl border border-border/60 bg-background/70 p-5"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 12% 20%, hsl(var(--primary) / 0.08), transparent 45%), radial-gradient(circle at 88% 0%, hsl(var(--primary) / 0.06), transparent 35%), linear-gradient(130deg, rgba(255, 255, 255, 0.06) 0%, transparent 45%)",
-              }}
+              className="group flex flex-col items-center gap-6 rounded-3xl bg-muted/30 p-8 text-center transition-colors hover:bg-muted/50"
             >
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Icon className="h-5 w-5" />
+              <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-background text-primary shadow-sm transition-transform group-hover:scale-110">
+                <Icon className="h-8 w-8 stroke-[1.5]" />
               </span>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold text-foreground">{title}</p>
-                <p className="text-sm text-muted-foreground">{description}</p>
+              <div className="space-y-3">
+                <h3 className="text-2xl font-medium text-foreground">
+                  {title}
+                </h3>
+                <p className="text-lg font-light leading-relaxed text-muted-foreground">
+                  {description}
+                </p>
               </div>
             </div>
           ))}

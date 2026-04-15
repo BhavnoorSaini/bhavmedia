@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 async function getGalleryImages() {
   const command = new ListObjectsV2Command({
     Bucket: process.env.R2_BUCKET_NAME,
@@ -32,7 +31,7 @@ async function getGalleryImages() {
     const R2_PUBLIC_URL = process.env.NEXT_PUBLIC_R2_PUBLIC_URL;
 
     return Contents?.map((file) => ({
-      // Sprip and space image name so it can be used as alt text
+      // Strip and space image name so it can be used as alt text
       name: (file.Key || "").split('.')[0].replace(/[-_]/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
       url: `${R2_PUBLIC_URL}/${file.Key}`,
     })) || [];
@@ -44,9 +43,18 @@ async function getGalleryImages() {
 
 export default function GalleryPage() {
   return (
-    <main className="flex flex-1 flex-col">
-      <section className="section-spacing">
-        <div className="page-shell">
+    <main className="flex flex-col flex-1 bg-background min-h-screen">
+      <section className="section-spacing pt-24 pb-24 border-t border-border/40">
+        <div className="page-shell max-w-7xl mx-auto flex flex-col gap-16">
+          <div className="text-center space-y-6">
+            <h1 className="text-balance text-5xl font-light tracking-tight text-foreground sm:text-7xl leading-[1.1]">
+              Portfolio
+            </h1>
+            <p className="max-w-2xl mx-auto text-balance text-lg font-light leading-relaxed text-muted-foreground sm:text-xl">
+              A curated selection of recent editorial, portrait, and brand photography.
+            </p>
+          </div>
+          
           <Suspense fallback={<GallerySkeleton />}>
             <GalleryContent />
           </Suspense>

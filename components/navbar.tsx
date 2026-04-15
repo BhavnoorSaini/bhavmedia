@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AuthButton } from "@/components/auth-button";
+import { NavbarMobileMenu } from "@/components/navbar-mobile-menu";
 import { createClient } from "@/lib/supabase/server";
 
 /* Adapt to auth status */
@@ -14,9 +15,10 @@ export async function Navbar() {
     <header className="relative z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur">
       <nav
         aria-label="Primary navigation"
-        className="relative mx-auto flex w-full max-w-6xl flex-wrap items-center gap-3 px-4 py-4 sm:px-6"
+        className="relative mx-auto flex w-full max-w-6xl items-center px-4 py-4 sm:px-6"
       >
-        <div className="flex items-center gap-6">
+        {/* Logo */}
+        <div className="flex items-center">
           {isLoggedIn ? (
             <span className="text-sm font-semibold uppercase tracking-[0.35em] text-primary/80">
               BhavMedia
@@ -30,35 +32,40 @@ export async function Navbar() {
           )}
         </div>
 
+        {/* Desktop nav links */}
         {!isLoggedIn && (
-          <div className="order-last flex w-full flex-wrap items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:order-none sm:flex-1 sm:justify-center lg:justify-start">
+          <div className="hidden flex-1 items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground sm:flex lg:justify-start">
             <Link
               href="/"
-              className="rounded-full px-3 py-1.5 text-muted-foreground transition hover:text-primary"
+              className="rounded-full px-3 py-1.5 transition hover:text-primary"
             >
               Home
             </Link>
             <Link
               href="/gallery"
-              className="rounded-full px-3 py-1.5 text-muted-foreground transition hover:text-primary"
+              className="rounded-full px-3 py-1.5 transition hover:text-primary"
             >
               Gallery
             </Link>
             <Link
               href="/contact"
-              className="rounded-full px-3 py-1.5 text-muted-foreground transition hover:text-primary"
+              className="rounded-full px-3 py-1.5 transition hover:text-primary"
             >
               Contact
             </Link>
-            <AuthButton/>
           </div>
         )}
 
-        {isLoggedIn && (
-          <div className="ml-auto flex items-center gap-3">
+        {/* Right side */}
+        <div className="ml-auto flex items-center gap-2">
+          {/* Auth button: always visible for logged-in, desktop-only for logged-out */}
+          <div className={isLoggedIn ? "block" : "hidden sm:block"}>
             <AuthButton />
           </div>
-        )}
+
+          {/* Mobile burger menu (logged-out only) */}
+          {!isLoggedIn && <NavbarMobileMenu authButton={<AuthButton />} />}
+        </div>
       </nav>
     </header>
   );

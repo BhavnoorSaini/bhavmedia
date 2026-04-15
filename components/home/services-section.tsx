@@ -1,6 +1,5 @@
 import type { ServiceOffering } from "@/lib/content/home";
-import { Card, CardContent } from "@/components/ui/card";
-import { Sparkles } from "lucide-react";
+import { Check } from "lucide-react";
 
 interface ServicesSectionProps {
   services: ReadonlyArray<ServiceOffering>;
@@ -8,49 +7,40 @@ interface ServicesSectionProps {
 
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
-    <section id="services" className="section-spacing">
-      <div className="page-shell section-stack">
-        <div className="max-w-3xl space-y-4 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/30 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span>Services</span>
-          </div>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Commercial & Enthusiast Photography Services in Illinois
+    <section id="services" className="section-spacing bg-muted/30">
+      <div className="page-shell flex flex-col gap-16">
+        <div className="flex flex-col items-center text-center space-y-6 max-w-2xl mx-auto">
+          <h2 className="text-balance text-4xl font-light tracking-tight text-foreground sm:text-5xl">
+            Specialized Services
           </h2>
-          <p className="text-base text-muted-foreground">
+          <p className="text-lg font-light leading-relaxed text-muted-foreground">
             Choose the coverage you need and layer on planning support, direction, and retouching without the guesswork.
           </p>
         </div>
 
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible sm:snap-none">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(({ icon: Icon, label, description, features }) => (
-            <Card
-              key={label}
-              className="h-full min-w-[260px] rounded-[var(--card-radius-lg)] border-border/70 bg-muted/10 sm:min-w-0"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 12% 20%, hsl(var(--primary) / 0.08), transparent 45%), radial-gradient(circle at 88% 0%, hsl(var(--primary) / 0.06), transparent 35%), linear-gradient(130deg, rgba(255, 255, 255, 0.06) 0%, transparent 45%)",
-              }}
+            <div 
+              key={label} 
+              className="group relative flex flex-col items-center text-center overflow-hidden rounded-3xl bg-background p-8 border border-border/50 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1"
             >
-              <CardContent className="flex h-full flex-col gap-4 p-6">
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="text-base font-semibold text-foreground">{label}</h3>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
-                <ul className="space-y-1 text-sm text-foreground/80">
-                  {features.map((feature) => (
-                    <li key={feature} className="flex gap-2">
-                      <span className="text-primary">—</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <Icon className="h-7 w-7 stroke-[1.5]" />
+              </div>
+              <h3 className="mb-3 text-xl font-medium text-foreground">{label}</h3>
+              <p className="mb-8 text-base font-light leading-relaxed text-muted-foreground">{description}</p>
+              
+              <ul className="mt-auto space-y-3 text-sm font-light text-foreground/80 w-full">
+                {features.map((feature) => (
+                  <li key={feature} className="flex items-center justify-center gap-3">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted/50 text-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                      <Check className="h-3 w-3 stroke-[3]" />
+                    </span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
