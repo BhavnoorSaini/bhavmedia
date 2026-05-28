@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ImageIcon, Maximize2, X } from "lucide-react";
+import { Maximize2, X } from "lucide-react";
 
 export type GalleryImage = {
   name: string;
@@ -14,11 +14,10 @@ type Props = {
 };
 
 const INITIAL_VISIBLE = 25; // reduce initial load for performance
-const LOAD_STEP = 8; // load 8 more images each time user scrolls near bottom
+const LOAD_STEP = 10; // load more images each time user scrolls near bottom
 
 export function GalleryGrid({ images }: Props) {
   const [selected, setSelected] = useState<GalleryImage | null>(null);
-  const [previewAspectRatio, setPreviewAspectRatio] = useState(1);
   const [visibleCount, setVisibleCount] = useState(() => Math.min(INITIAL_VISIBLE, images.length));
   
   const sentinelRef = useRef<HTMLDivElement | null>(null);
@@ -38,25 +37,25 @@ export function GalleryGrid({ images }: Props) {
   }, [selected, close]);
 
   // Infinite Scroll
-    useEffect(() => {
-        if (!hasMore) return undefined;
-        const target = sentinelRef.current;
-        if (!target) return undefined;
+  useEffect(() => {
+      if (!hasMore) return undefined;
+      const target = sentinelRef.current;
+      if (!target) return undefined;
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries.some((entry) => entry.isIntersecting)) {
-                    setVisibleCount((prev) => Math.min(images.length, prev + LOAD_STEP));
-                }
-            },
-            {
-                rootMargin: "200px",
-            }
-        );
+      const observer = new IntersectionObserver(
+          (entries) => {
+              if (entries.some((entry) => entry.isIntersecting)) {
+                  setVisibleCount((prev) => Math.min(images.length, prev + LOAD_STEP));
+              }
+          },
+          {
+              rootMargin: "400px",
+          }
+      );
 
-        observer.observe(target);
-        return () => observer.disconnect();
-    }, [hasMore, images.length, visibleImages]); // Added visibleImages to re-run if more space is available
+      observer.observe(target);
+      return () => observer.disconnect();
+  }, [hasMore, images.length]);
 
   // Prevent background scroll when preview window is open
   useEffect(() => {
@@ -67,12 +66,12 @@ export function GalleryGrid({ images }: Props) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {visibleImages.map((img, index) => (
           <GalleryCard
             key={img.name}
             image={img}
-            isFirst={index === 0}
+            isFirst={index < 4}
             onSelect={handleSelect}
           />
         ))}
@@ -85,52 +84,31 @@ export function GalleryGrid({ images }: Props) {
       {/* Lightbox Preview */}
       {selected && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 sm:p-8 backdrop-blur-md"
           onClick={close}
         >
+          <button
+            onClick={close}
+            className="absolute right-6 top-6 z-[110] rounded-full bg-white/10 p-3 text-white transition-all hover:bg-white/20 hover:scale-105 backdrop-blur-md"
+          >
+            <X className="h-6 w-6 stroke-[2]" />
+          </button>
+
           <div
             role="dialog"
             aria-modal="true"
-            className="relative w-full max-w-6xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-2xl"
+            className="relative w-full h-full max-w-7xl flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={close}
-              className="absolute right-4 top-4 z-[110] rounded-full bg-muted/80 p-2 text-foreground transition hover:bg-primary hover:text-primary-foreground"
-            >
-              <X className="h-5 w-5" />
-            </button>
-
-            <div className="flex flex-col gap-4 p-4 sm:p-6">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                <ImageIcon className="h-4 w-4 text-primary" />
-                <span>High-Resolution Preview</span>
-              </div>
-
-              <div className="relative overflow-hidden rounded-lg bg-muted/30 ring-1 ring-border">
-                <div
-                  className="relative mx-auto w-full transition-all duration-500"
-                  style={{ 
-                    aspectRatio: previewAspectRatio, 
-                    maxHeight: "75vh",
-                    minHeight: "300px" 
-                  }}
-                >
-                  <Image
-                    src={selected.url}
-                    alt={selected.name}
-                    fill
-                    priority
-                    sizes="90vw"
-                    className="object-contain"
-                    onLoad={({ currentTarget }) => {
-                      if (currentTarget.naturalWidth && currentTarget.naturalHeight) {
-                        setPreviewAspectRatio(currentTarget.naturalWidth / currentTarget.naturalHeight);
-                      }
-                    }}
-                  />
-                </div>
-              </div>
+            <div className="relative w-full h-full max-h-[90vh]">
+              <Image
+                src={selected.url}
+                alt={selected.name}
+                fill
+                priority
+                sizes="100vw"
+                className="object-contain drop-shadow-2xl"
+              />
             </div>
           </div>
         </div>
@@ -150,27 +128,27 @@ const GalleryCard = memo(function GalleryCard({
 }) {
     return (
         <div
-        role="button"
-        tabIndex={0}
-        className="group relative cursor-pointer overflow-hidden rounded-xl border border-border/60 bg-background/90 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
-        onClick={() => onSelect(image)}
-        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelect(image)}
+          role="button"
+          tabIndex={0}
+          className="group relative cursor-pointer overflow-hidden rounded-3xl border border-border/40 bg-muted/20 shadow-sm transition-all hover:-translate-y-2 hover:shadow-xl"
+          onClick={() => onSelect(image)}
+          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelect(image)}
         >
-        <div className="relative aspect-[3/4] w-full overflow-hidden bg-muted">
+        <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted/50">
             <Image
-            src={image.url}
-            alt={image.name}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-            className="object-cover transition duration-700 group-hover:scale-105"
-            loading={isFirst ? "eager" : "lazy"}
-            priority={isFirst}
+              src={image.url}
+              alt={image.name}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+              className="object-cover transition duration-700 group-hover:scale-110"
+              loading={isFirst ? "eager" : "lazy"}
+              priority={isFirst}
             />
         </div>
         
-        <div className="absolute inset-0 flex items-center justify-center bg-background/20 opacity-0 transition-opacity backdrop-blur-[2px] group-hover:opacity-100">
-            <div className="rounded-full bg-primary p-2.5 text-primary-foreground shadow-lg shadow-primary/30">
-            <Maximize2 className="h-4 w-4" />
+        <div className="absolute inset-0 flex items-center justify-center bg-background/10 opacity-0 transition-all duration-300 backdrop-blur-[2px] group-hover:opacity-100">
+            <div className="rounded-full bg-background/90 p-4 text-foreground shadow-xl transition-transform group-hover:scale-110">
+              <Maximize2 className="h-5 w-5 stroke-[1.5]" />
             </div>
         </div>
         </div>

@@ -1,7 +1,5 @@
-import Link from "next/link";
 import type { HeroHighlight } from "@/lib/content/home";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import Link from "next/link";
 
 type HeroSectionProps = {
   highlights: ReadonlyArray<HeroHighlight>;
@@ -9,35 +7,62 @@ type HeroSectionProps = {
 
 export function HeroSection({ highlights }: HeroSectionProps) {
   return (
-    <section className="section-spacing border-b border-border/60 bg-gradient-to-b from-background via-primary/5 to-background">
-      <div className="relative page-shell section-stack">
-        <div className="space-y-6 text-center sm:text-left">
-          <div className="space-y-4">
-            <h1 className="text-balance text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-              Professional Photography for <span className="text-primary">Chicagoland Brands & Restaurants.</span>
-            </h1>
-            <p className="max-w-3xl text-balance text-base text-muted-foreground sm:text-lg sm:leading-relaxed">
-              Based in Plainfield, IL, we specialize in restaurant launches, editorial menu features, and brand storytelling across the Chicagoland area.
-            </p>
+    <section className="relative flex min-h-[85vh] flex-col justify-center overflow-hidden bg-background pb-24 pt-32">
+      {/* Layered background */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-background to-background" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-muted/40 via-transparent to-transparent" />
+
+      <div className="page-shell relative z-20 flex flex-col gap-20">
+        <div className="mx-auto flex max-w-4xl flex-col items-center space-y-10 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+            Photography &middot; Direction &middot; Retouching
+          </p>
+          <h1 className="text-balance text-5xl font-light tracking-tight text-foreground leading-[1.08] sm:text-8xl">
+            Professional Photography for{" "}
+            <br className="hidden sm:block" />
+            <span className="font-medium text-foreground">
+              Chicagoland Brands
+            </span>
+          </h1>
+          <p className="max-w-2xl text-balance text-lg font-light leading-relaxed text-muted-foreground sm:text-2xl">
+            Based in Plainfield, IL, we specialize in restaurant launches,
+            editorial menu features, and brand storytelling across the
+            Chicagoland area.
+          </p>
+          <div className="flex w-full max-w-md flex-row justify-center gap-3 pt-6 sm:max-w-none sm:gap-4">
+            <Link
+              href="/gallery"
+              className="inline-flex h-12 flex-1 items-center justify-center whitespace-nowrap rounded-full bg-foreground px-4 text-sm font-medium text-background shadow-xl shadow-foreground/10 transition-transform hover:scale-105 sm:h-14 sm:flex-none sm:px-8 sm:text-base"
+            >
+              View Portfolio
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex h-12 flex-1 items-center justify-center whitespace-nowrap rounded-full border border-border bg-background/50 px-4 text-sm font-medium backdrop-blur-sm transition-colors hover:bg-muted sm:h-14 sm:flex-none sm:px-8 sm:text-base"
+            >
+              Book a Session
+            </Link>
           </div>
         </div>
 
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible sm:snap-none">
+        <div className="grid w-full gap-10 border-t border-border/50 pt-12 sm:grid-cols-3">
           {highlights.map(({ icon: Icon, title, description }) => (
-            <Card
+            <div
               key={title}
-              className="flex min-w-[240px] flex-col gap-3 rounded-[var(--card-radius-lg)] border-border/60 bg-background/90 p-5 backdrop-blur-sm sm:min-w-0"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 12% 20%, hsl(var(--primary) / 0.08), transparent 45%), radial-gradient(circle at 88% 0%, hsl(var(--primary) / 0.06), transparent 35%), linear-gradient(130deg, rgba(255, 255, 255, 0.06) 0%, transparent 45%)",
-              }}
+              className="group flex flex-col items-center gap-5 text-center"
             >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Icon className="h-5 w-5" />
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <Icon className="h-6 w-6 stroke-[1.5]" />
               </span>
-              <p className="text-sm font-semibold text-foreground">{title}</p>
-              <p className="text-sm text-muted-foreground">{description}</p>
-            </Card>
+              <div className="space-y-2">
+                <h3 className="text-lg font-medium tracking-wide text-foreground">
+                  {title}
+                </h3>
+                <p className="text-base font-light leading-relaxed text-muted-foreground">
+                  {description}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
