@@ -1,92 +1,21 @@
-# BhavMedia — Photography & Visual Storytelling
+# BhavMedia
 
-BhavMedia is a professional photography studio based online. We capture weddings, portraits, events, and commercial shoots with a focus on authentic moments, clean composition, and beautiful color.
+My photography site at [bhavmedia.com](https://bhavmedia.com): a public portfolio, plus a private portal where clients sign in to view and download their photos.
 
-## Features
+## How it works
 
-- Responsive, high-performance portfolio and gallery pages
-- Public gallery served from Cloudflare R2 (`/gallery`) for fast CDN delivery
-- Private client galleries with authenticated access and private file storage (Supabase) at `/auth/client`
-- Account-based authentication and database powered by Supabase
-- High-resolution downloads, print-ready files, and optional print ordering
-- Contact form uses Resend for transactional emails
-- Built with Next.js and Tailwind CSS for fast local development and deployment
+Public and client photos are stored separately because they're accessed in different ways.
 
-## Portfolio
+- **Public gallery:** Portfolio images live in Cloudflare R2 and load straight from its public URL. The gallery page just lists the bucket, and the CDN handles delivery.
+- **Client galleries:** Paid work lives in a private Supabase Storage bucket, with one folder per client. When a client signs in, the server looks up their folder from their profile and creates signed links that expire after an hour. Links are requested in parallel batches of 90 to stay under Supabase's limit of 100 per request.
+- **Download all:** A server route collects a client's files and returns them as a single ZIP.
+- **Accounts:** Clients can't sign up on their own; accounts are created for them. Sessions are refreshed in the Next.js proxy, client pages are hidden from search engines, and clients are signed out automatically when they leave the portal.
+- **Contact form:** Inquiries arrive by email through Resend.
 
-- Browse the full portfolio on the site: the homepage and the `/gallery` route showcase selected projects and client galleries.
-- Client galleries include private download links and high-resolution image delivery.
+## Built with
 
-## Services
+Next.js · TypeScript · Tailwind CSS · Supabase (Auth, Postgres, Storage) · Cloudflare R2 · Resend · Vercel
 
-- Weddings & Engagements
-- Automobile & Bikes
-- Events & Editorial
-- Portraits & Headshots
-- Commercial & Product Photography
-- Photo Editing, Retouching & Prints
+## Photos
 
-For pricing and availability, request a personalized quote via the contact page.
-
-## Booking & Contact
-
-- Contact form: visit the site's `/contact` page.
-
-Please include event date, location, and a brief description when enquiring.
-
-## Client Deliverables
-
-- Curated online gallery for proofing
-- High-resolution downloads (JPEG, TIFF on request)
-- Print-ready files and optional print orders
-- Flexible licensing for personal and commercial use
-
-## Run Locally (development)
-
-If you want to run this site locally (Next.js project), create a `.env.local` file with the required environment variables (example below), install dependencies, and start the dev server.
-
-Create a `.env.local` file with these variables (fill in values):
-
-```env
-R2_ACCESS_KEY_ID=
-R2_SECRET_ACCESS_KEY=
-R2_ENDPOINT=
-R2_BUCKET_NAME=
-NEXT_PUBLIC_R2_PUBLIC_URL=
-
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
-
-RESEND_API_KEY=
-RESEND_FROM_EMAIL=
-RESEND_TO_EMAIL=
-
-NEXT_PUBLIC_SOCIAL_INSTAGRAM_URL=
-NEXT_PUBLIC_SOCIAL_TIKTOK_URL=
-NEXT_PUBLIC_CONTACT_EMAIL=
-```
-
-Note: the contact page uses Resend for sending emails.
-
-Install dependencies and run the dev server:
-
-```bash
-npm install
-npm run dev
-```
-
-Open http://localhost:3000 to preview locally.
-
-## Tech & Credits
-
-- Built with Next.js, Tailwind CSS, Supabase
-- Infrastructure: Supabase handles authentication, the primary database, and private file storage used for client galleries and authenticated downloads (private client galleries are served under `/auth/client`). Cloudflare R2 is used for public-facing gallery storage (the `/gallery` route). See `lib/supabase` and `lib/r2` for implementation details.
-
-## Artwork & Licensing
-
-All images and creative work displayed on this site are the property of BhavMedia. Reuse or commercial licensing requires prior permission — contact us for licensing and prints.
-
----
-
-© BhavMedia
+All photographs on the site are © BhavMedia and may not be reused without permission.
